@@ -2,6 +2,7 @@ package op
 
 import (
 	"context"
+	json "github.com/json-iterator/go"
 	"sort"
 	"strings"
 	"time"
@@ -96,7 +97,8 @@ func initStorage(ctx context.Context, storage model.Storage, storageDriver drive
 	storagesMap.Store(driverStorage.MountPath, storageDriver)
 	if err != nil {
 		driverStorage.SetStatus(err.Error())
-		err = errors.Wrap(err, "failed init storage")
+		storageInfo, _ := json.Marshal(storage)
+		err = errors.Wrap(err, "failed init storage "+string(storageInfo))
 	} else {
 		driverStorage.SetStatus(WORK)
 	}
