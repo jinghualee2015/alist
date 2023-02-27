@@ -9,7 +9,7 @@ output/
 *.dll
 *.so
 *.dylib
-*.db
+#*.db
 *.bin
 
 # Test binary, built with `go test -c`
@@ -23,7 +23,7 @@ output/
 /bin/*
 *.json
 /build
-/data/
+#/data/
 /log/
 /lang/
 /daemon/
